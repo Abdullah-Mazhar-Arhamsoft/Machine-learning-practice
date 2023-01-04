@@ -42,34 +42,34 @@ class poseDetector():
         return lmlist
 
 
-# def main():
-detector = poseDetector()
-cap = cv2.VideoCapture('Pose_Estimation/PoseVideos/Pose3.mp4')
-ptime = 0
+def main():
+    detector = poseDetector()
+    cap = cv2.VideoCapture('Pose_Estimation/PoseVideos/Pose3.mp4')
+    ptime = 0
 
-while (cap.isOpened()):
-    success, img = cap.read()
-    # print(img)
-    img = detector.findPose(img)
-    lmlist = detector.findPosition(img, draw= False)
-    if len(lmlist) != 0 :
-        # print(lmlist)
-        cv2.circle(img, (lmlist[14][1], lmlist[14][2]), 12, (0, 0, 255), cv2.FILLED)
+    while (cap.isOpened()):
+        success, img = cap.read()
+        # print(img)
+        img = detector.findPose(img)
+        lmlist = detector.findPosition(img, draw= False)
+        if len(lmlist) != 0 :
+            # print(lmlist)
+            cv2.circle(img, (lmlist[14][1], lmlist[14][2]), 12, (0, 0, 255), cv2.FILLED)
 
-    ctime = time.time()
-    fps = 1/(ctime - ptime)
-    ptime = ctime
+        ctime = time.time()
+        fps = 1/(ctime - ptime)
+        ptime = ctime
 
-    cv2.putText(img, str(int(fps)), (70, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
+        cv2.putText(img, str(int(fps)), (70, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
-    img = cv2.resize(img, (1080, 1920))
-    # print(img)
-    cv2.namedWindow("Resized_Window", cv2.WINDOW_NORMAL)
-    cv2.resizeWindow("Resized_Window", 700, 700)
-    cv2.imshow("Resized_Window", img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        img = cv2.resize(img, (1080, 1920))
+        # print(img)
+        cv2.namedWindow("Resized_Window", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Resized_Window", 700, 700)
+        cv2.imshow("Resized_Window", img)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
