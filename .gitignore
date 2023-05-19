@@ -1,1 +1,12 @@
 .Advanced Computer Vision/env1
+.ipynb_checkpoints/
+RecomSystm/
+cosine_sim.pkl
+credits.csv
+keywords.csv
+metadata_clean.csv
+movielens/
+movies_metadata.csv
+python.py
+small_dataset/
+venv/
